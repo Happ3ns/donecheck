@@ -1,0 +1,5 @@
+**Completion claim:** in-memory rate limiter added.
+**Evidence:** src/rateLimit.ts:1–8 created; no test command run.
+**Gaps:** src/rateLimit.ts:4–5 — logic double-reads `hits.get(key + ':count')`; no test for boundary at `limit`, no reset path, no eviction.
+**Blast radius:** not imported anywhere yet.
+**Skipped:** typecheck, tests, lint — none were run.
