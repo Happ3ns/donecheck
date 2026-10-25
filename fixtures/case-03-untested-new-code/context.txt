@@ -1,0 +1,3 @@
+User asked: "Add a simple in-memory rate limiter."
+Claude said: "Done. Added src/rateLimit.ts with a rateLimit function."
+Test run: none — no test file was written.
