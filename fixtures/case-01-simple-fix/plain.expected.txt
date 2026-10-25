@@ -1,0 +1,5 @@
+Looks done. The fix is covered by an existing test that passes.
+- Checked: isEmail test suite passed (exit 0).
+- Not checked: other validators were not re-run.
+- Safety: no data or config changes.
+- Next step: commit the change.
