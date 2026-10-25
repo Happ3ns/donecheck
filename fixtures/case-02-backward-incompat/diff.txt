@@ -1,0 +1,8 @@
+--- a/src/api.ts
++++ b/src/api.ts
+@@ -1,4 +1,4 @@
+-export function getUser(id: string) {
+-  return db.users.findUnique({ where: { id } });
++export function getUser(id: string, includeDeleted = false) {
++  return db.users.findUnique({ where: { id }, includeDeleted });
+ }
