@@ -1,11 +1,19 @@
-# Plain Lens
+# Plain lens
 
-(Audience: Vibe coder)
+Audience: someone who cannot or will not read the diff.
 
-[Verdict: Looks done]
+Produce exactly:
 
-- **Verified:** Your core request was addressed.
-- **Not checked:** Exhaustive edge cases were not tested.
-- **Safety:** No destructive or persistent data changes were made.
+1. A verdict COMPUTED from evidence — never pre-filled:
+   - "Looks done" ONLY IF build/test evidence exists for the changed code.
+   - "Done, but unverified" if the code exists but no check covers it.
+   - "Do not deploy yet" if data, auth, payments, or config migration is touched.
+2. 2–4 short bullets: what was checked, what was not, any data/safety-relevant change.
+3. Exactly ONE next action the user can ask Claude to do, or do themselves.
 
-**Next step:** Run the code once in a non-production environment.
+Rules:
+
+- Never assert safety ("no destructive changes") unless `git diff` shows it.
+- If you cannot cite evidence, say "unverified" — do not fill the gap with confidence.
+- No file paths unless the user asks. No jargon. No headers beyond the verdict.
+- Target: fits on one phone screen.
