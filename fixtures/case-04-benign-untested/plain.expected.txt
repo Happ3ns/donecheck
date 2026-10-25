@@ -1,0 +1,5 @@
+Done, but unverified. The helper exists but nothing tests it.
+- Checked: the file compiles.
+- Not checked: rounding, negative values, large numbers.
+- Safety: no data or config changes.
+- Next step: ask Claude to add a test for rounding and negative values.
