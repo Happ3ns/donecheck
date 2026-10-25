@@ -1,6 +1,9 @@
 ---
 name: donecheck
-description: Adaptive verification report: "Claude says it's done—what should I check next?" (Triggers: "is this good", "what did it do", "blast radius", "evidence")
+description: >-
+  Adaptive verification report answering "Claude says it's done—what should I
+  check next?" Triggers include "is this good", "what did it do",
+  "blast radius", and "evidence".
 version: 0.1.0
 license: MIT
 ---
