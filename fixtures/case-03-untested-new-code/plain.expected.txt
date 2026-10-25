@@ -1,0 +1,5 @@
+Done, but unverified. The new code exists but nothing tests it.
+- Checked: the file compiles.
+- Not checked: whether the limiter actually limits, resets, or handles multiple keys.
+- Safety: the map grows forever — there is no eviction.
+- Next step: ask Claude to write tests for allow, block, and reset, then run them.
