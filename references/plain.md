@@ -21,5 +21,7 @@ Rules:
 If more than one verdict condition applies, use the MOST SEVERE one.
 Order: Do not deploy yet > Done, but unverified > Looks done.
 
-Produce ONLY the verdict, 2–4 bullets, and ONE next action. Do not add
-trailing commentary or a second paragraph.
+End the output after the ONE next action. Do not add a "Skipped" section,
+a "What was checked" appendix, or any paragraph after the next action.
+Anything not covered by the bullets belongs in the standard or expert lens,
+not here.
