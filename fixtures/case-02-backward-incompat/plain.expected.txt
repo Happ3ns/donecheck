@@ -1,0 +1,5 @@
+Do not deploy yet. The change touches how user data is read and call sites were not updated.
+- Checked: tests pass.
+- Not checked: any caller of getUser — none were updated for the new parameter.
+- Safety: this changes data retrieval behavior.
+- Next step: ask Claude to find and update every call site of getUser, then re-run tests.
