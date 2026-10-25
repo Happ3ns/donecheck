@@ -18,6 +18,8 @@ Every response must start with one line naming the chosen lens and why:
 
     [donecheck: <plain|standard|expert> lens — <reason>]
 
+...
+
 Reasons are drawn from the routing rules below (e.g. `from .claude/donecheck-lens`, `plain phrasing detected`, `summarizing phrasing detected`, `expert phrasing detected`, `no preference file, no lens-specific phrasing`).
 
 Then produce the report by following the chosen lens file in `references/` verbatim. Do not invent a verdict, evidence line, or safety claim that the lens rules do not permit.
