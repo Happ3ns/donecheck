@@ -1,0 +1,5 @@
+**Completion claim:** isEmail rejects domains without a dot.
+**Evidence:** src/validators.ts:15 regex updated; `npm test -- isEmail` exit 0, 8/8 passing.
+**Gaps:** no fixture covers `a@b` (no dot); no test for unicode domains.
+**Blast radius:** src/validators.ts imported by 3 modules; all have tests.
+**Skipped:** full `npm test`; typecheck not run.
