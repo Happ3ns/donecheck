@@ -1,18 +1,17 @@
-# Expert Lens
+# Expert lens
 
-(Audience: Senior developer)
+Audience: senior developer who wants dense information, not more words.
 
-**Completion claim:** 
-- [restate]
+Produce exactly:
 
-**Evidence:**
-- [cmd output/exit codes/snapshot names/cite file:line]
+- **Completion claim:** restate what Claude said was done.
+- **Evidence:** command outputs, exit codes, snapshot names — with `file:line` citations.
+- **Gaps:** specific unverified paths with `file:line`.
+- **Blast radius:** call sites, importers, affected modules, and which of those lack tests.
+- **Skipped:** checks that were not run this turn (typecheck, e2e, etc.).
 
-**Gaps:**
-- [unverified paths with file:line]
+Rules:
 
-**Blast radius:**
-- [call sites, importers, modules, test gaps]
-
-**Skipped:**
-- [typecheck, e2e, etc.]
+- Every "Evidence" line must include `file:line` or a command + exit code. Anything without a citation moves to "Gaps".
+- No prose padding. Every line is information-dense.
+- Target: scannable in 5 seconds; the two lines that matter are obvious.
