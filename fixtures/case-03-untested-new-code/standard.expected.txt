@@ -1,0 +1,4 @@
+**Changed:** src/rateLimit.ts (new file)
+**Verified:** file compiles.
+**Not verified:** allow/block/reset behavior; multi-key isolation; memory growth of the hits map.
+**Risk:** unbounded map growth; not safe for production without eviction.
