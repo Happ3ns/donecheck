@@ -1,0 +1,5 @@
+**Completion claim:** getUser accepts an includeDeleted option.
+**Evidence:** src/api.ts:1 signature updated; `npm test` exit 0 (12/12).
+**Gaps:** src/routes/users.ts:42, src/jobs/cleanup.ts:88 call getUser with one arg — behavior unchanged, but no test covers includeDeleted=true.
+**Blast radius:** src/api.ts imported by 5 modules; 2 lack tests (src/jobs/*).
+**Skipped:** typecheck; integration tests.
