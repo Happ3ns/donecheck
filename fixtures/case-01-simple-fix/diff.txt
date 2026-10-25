@@ -1,1 +1,8 @@
-
+--- a/src/validators.ts
++++ b/src/validators.ts
+@@ -12,7 +12,7 @@ export function isEmail(value: string): boolean {
+   if (typeof value !== 'string') return false;
+   if (value.length === 0) return false;
+-  return /^[^@]+@[^@]+$/.test(value);
++  return /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(value);
+ }
