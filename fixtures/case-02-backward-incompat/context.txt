@@ -1,0 +1,3 @@
+User asked: "Add an includeDeleted option to getUser."
+Claude said: "Done. Added the parameter."
+Test run: `npm test` → 12 passing, exit 0. No call sites were updated.
