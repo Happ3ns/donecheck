@@ -10,26 +10,33 @@ license: MIT
 
 # donecheck
 
-Claude Code might say the task is done, but you still have to trust it. `donecheck` gives you the right amount of information to verify Claude's work, without the noise.
+Every Claude Code user shares one moment: Claude says the task is done, and you do not know what to believe. donecheck answers that question at the depth the current user can actually use, without becoming a bloated monolith.
 
-## How it works
-`donecheck` acts as a thin router that analyzes your request phrasing and available context to provide a focused report. It supports three lenses:
-1. **Plain**: For quick vibes (Traffic-light verdict + 1 next action).
-2. **Standard**: For intermediate review (Changed files + Summary).
-3. **Expert**: For senior developers (Evidence, Gaps, Blast radius).
+## Output contract
 
-## Local-Only Promise
-This tool runs entirely on your local machine. No data is sent to external servers, no telemetry is collected, and it depends strictly on local git state and command history.
+Every response must start with one line naming the chosen lens and why:
 
-## Routing Rules
-- **Preference**: Use `.claude/donecheck-lens` if present (`plain`, `standard`, `expert`).
-- **Phrasing**: 
-    - *Casual*: ("is this good", "did it work") → **Plain**
-    - *Summarizing*: ("what did it do", "show me") → **Standard**
-    - *Technical*: ("evidence", "blast radius", "diff") → **Expert**
-- **Fallback**: **Standard**.
+    [donecheck: <plain|standard|expert> lens — <reason>]
 
-## References
-- [Plain Lens](references/plain.md)
-- [Standard Lens](references/standard.md)
-- [Expert Lens](references/expert.md)
+Reasons are drawn from the routing rules below (e.g. `from .claude/donecheck-lens`, `plain phrasing detected`, `summarizing phrasing detected`, `expert phrasing detected`, `no preference file, no lens-specific phrasing`).
+
+Then produce the report by following the chosen lens file in `references/` verbatim. Do not invent a verdict, evidence line, or safety claim that the lens rules do not permit.
+
+## Routing rules (priority order)
+
+1. **Explicit preference.** If `.claude/donecheck-lens` exists and contains `plain`, `standard`, or `expert`, use it. This is an optimization, never a prerequisite.
+2. **Phrasing in the current turn.**
+   - `is this good`, `did it work`, `am I done`, `should I trust this` → **plain**
+   - `what did it do`, `show me`, `summary` → **standard**
+   - `evidence`, `blast radius`, `what could break`, `call sites`, `traceability` → **expert**
+3. **Fallback.** `standard`. Never default to plain for someone using expert vocabulary. Never dump expert detail on a plain-lens turn.
+
+> `SKILL.md` is the authoritative router when the skill is invoked inside Claude Code. `donecheck.sh` is a debug/CLI helper that mirrors the same rules for local testing. If the two ever disagree, `SKILL.md` wins.
+
+## Lens files
+
+- `references/plain.md` — for users who cannot or will not read the diff
+- `references/standard.md` — default for most users
+- `references/expert.md` — for users who want dense, cited information
+
+Only load the lens file chosen by the routing rules above.
