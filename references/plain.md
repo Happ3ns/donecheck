@@ -17,3 +17,9 @@ Rules:
 - If you cannot cite evidence, say "unverified" — do not fill the gap with confidence.
 - No file paths unless the user asks. No jargon. No headers beyond the verdict.
 - Target: fits on one phone screen.
+
+If more than one verdict condition applies, use the MOST SEVERE one.
+Order: Do not deploy yet > Done, but unverified > Looks done.
+
+Produce ONLY the verdict, 2–4 bullets, and ONE next action. Do not add
+trailing commentary or a second paragraph.
