@@ -1,0 +1,4 @@
+**Changed:** src/api.ts
+**Verified:** `npm test` exit 0 (12/12 passing).
+**Not verified:** call sites of getUser; no caller was updated for the new signature.
+**Risk:** public signature changed; existing callers still compile only because the new parameter is optional with a default.
