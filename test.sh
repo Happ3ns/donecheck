@@ -52,11 +52,18 @@ check "router: expert phrasing" \
 check "router: fallback" \
   bash -c "DONECHECK_LENS= '$ROOT/donecheck.sh' '' | head -1 | grep -q 'standard lens'"
 
+has_fixture_files() {
+  local dir="$1"
+  for f in diff.txt context.txt plain.expected.txt standard.expected.txt expert.expected.txt; do
+    [[ -f "$dir/$f" ]] || return 1
+  done
+  return 0
+}
+
 # 4. Every fixture directory has the required files.
 for case in "$ROOT"/fixtures/*/; do
   name="$(basename "$case")"
-  check "$name has diff/context/expected files" \
-    bash -c "for f in diff.txt context.txt plain.expected.txt standard.expected.txt expert.expected.txt; do [[ -f '$case/\$f' ]] || exit 1; done"
+  check "$name has diff/context/expected files" has_fixture_files "$case"
 done
 
 if [[ $fail -eq 0 ]]; then
