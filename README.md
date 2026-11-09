@@ -9,6 +9,7 @@ Whether you're a vibe coder who just wants a traffic-light verdict or a senior d
 
 ```bash
 git clone https://github.com/Happ3ns/donecheck.git .claude/skills/donecheck
+```
 
 ## Local-Only Promise
 `donecheck` runs entirely on your local machine. No data is sent to external servers, no telemetry is collected, and it depends strictly on local git state and command history.
