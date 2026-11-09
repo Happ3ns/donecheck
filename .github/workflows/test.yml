@@ -5,5 +5,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install PyYAML
+        run: pip install pyyaml
       - name: Run fixture tests
-        run: ./test.sh
+        run: |
+          chmod +x test.sh donecheck.sh scripts/collect-signals.sh
+          ./test.sh

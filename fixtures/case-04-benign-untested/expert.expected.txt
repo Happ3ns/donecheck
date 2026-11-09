@@ -1,0 +1,5 @@
+**Completion claim:** currency formatting helper added.
+**Evidence:** src/formatCurrency.ts:1–3 created; no test command run.
+**Gaps:** src/formatCurrency.ts:2 — hardcoded 'en-US' locale; no test coverage for edge values (NaN, negative, float precision).
+**Blast radius:** standalone helper, not referenced in existing modules.
+**Skipped:** unit tests, formatting edge-case verification.

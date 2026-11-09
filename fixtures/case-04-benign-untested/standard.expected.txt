@@ -1,0 +1,4 @@
+**Changed:** src/formatCurrency.ts (new file)
+**Verified:** file compiles.
+**Not verified:** rounding behavior; negative amounts; large numbers; non-USD currencies.
+**Risk:** formatting discrepancy across locales if used in internationalized contexts without explicit locale passing.
