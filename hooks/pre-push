@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# donecheck pre-push hook
+# Runs automated blast-radius verification before git push
+set -euo pipefail
+
+SCRIPT_DIR="$(git rev-parse --show-toplevel 2>/dev/null || pwd)"
+
+if [[ -f "$SCRIPT_DIR/donecheck.sh" ]]; then
+  echo "🔍 [donecheck] Running pre-push verification check..."
+  "$SCRIPT_DIR/donecheck.sh" "what could break"
+fi

@@ -1,0 +1,21 @@
+name: 'donecheck Verification'
+description: 'Adaptive verification reports and blast-radius sanity checks tailored for coding agents and pull requests.'
+inputs:
+  lens:
+    description: 'Verification lens: plain (traffic-light), standard (balanced), or expert (blast radius & citations)'
+    required: false
+    default: 'standard'
+  query:
+    description: 'Optional developer query used for automatic lens detection'
+    required: false
+    default: 'verify changes'
+runs:
+  using: 'composite'
+  steps:
+    - name: Run donecheck
+      shell: bash
+      env:
+        DONECHECK_LENS: ${{ inputs.lens }}
+      run: |
+        chmod +x "${{ github.action_path }}/donecheck.sh" "${{ github.action_path }}/scripts/collect-signals.sh"
+        "${{ github.action_path }}/donecheck.sh" "${{ inputs.query }}"
